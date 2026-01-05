@@ -39,7 +39,13 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-
+        
+      - name: 🔍 DEBUG - Show all files
+        run: |
+          echo "Current location:"
+          pwd
+          echo "Listing all files recursively:"
+          ls -R
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color
