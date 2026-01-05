@@ -1,6 +1,6 @@
 // --- CONFIGURATION ---
 const drawDate = new Date("Jan 6, 2026 12:00:00").getTime();
-const apiEndpoint = "https://6poe7qf2a2.execute-api.eu-west-1.amazonaws.com/check"; 
+const apiEndpoint = "https://pu8o5hpnq9.execute-api.eu-west-1.amazonaws.com"; 
 
 // --- COUNTDOWN TIMER ---
 const timerElement = document.getElementById("timer");
