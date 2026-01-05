@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotería del Niño 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <div id="timer" class="countdown-timer">Cargando...</div>
+        </header>
+
+        <div class="ticket-card">
+            <div class="input-group">
+                <label for="ticket-number">TU NÚMERO</label>
+                <input type="tel" id="ticket-number" placeholder="00000" maxlength="5" autocomplete="off">
+            </div>
+
+            <button id="check-btn" onclick="checkResult()">
+                CONSULTAR
+            </button>
+            
+            <div id="result-container" class="hidden">
+                <div class="result-box">
+                    <h2 id="result-title">...</h2>
+                    <div id="prize-amount">€0</div>
+                    <p id="result-message">Categoría</p>
+                    <button class="reset-btn" onclick="resetSearch()">OTRO NÚMERO</button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Sorteo del 6 de Enero, 2026</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
