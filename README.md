@@ -1,4 +1,5 @@
 # El Niño 2026: Serverless Lottery Platform
+[![Terraform Deploy](https://github.com/NoENoG/el-nino-lottery-aws/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/NoENoG/el-nino-lottery-aws/actions/workflows/deploy.yml)
 
 A Terraform-managed, event-driven architecture designed for high-concurrency ingestion and distribution of lottery results.
 
