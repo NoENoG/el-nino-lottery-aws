@@ -57,9 +57,9 @@ jobs:
 
       - name: Deploy Frontend to S3
         if: success()
+        working-directory: .
         run: |
           echo "Syncing frontend files..."
-          # We go into the frontend folder and push files to the specific bucket
           aws s3 sync ./frontend s3://el-nino-lottery-aws-frontend --delete
 
 
