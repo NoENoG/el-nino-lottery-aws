@@ -27,4 +27,4 @@ def lambda_handler(event, context):
         return {'statusCode': 200, 'body': json.dumps('Mock Data Ingested')}
     except Exception as e:
         print(f"❌ Error writing to DB: {str(e)}")
-        return {'statusCode': 500, 'body': json.dumps(f"Error: {str(e)}")}
+        return {'statusCode': 500, 'body': json.dumps(f"Error: {str(e)}")}# force update
