@@ -1,6 +1,6 @@
  data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_file = "${path.module}/scraper.py"
+  source_file = "${path.module}/../backend/scraper.py"
   output_path = "lambda_function.zip"
 }
 
@@ -24,7 +24,7 @@ resource "aws_lambda_function" "scraper" {
 # --- INGESTER LAMBDA ---
 data "archive_file" "ingester_zip" {
   type        = "zip"
-  source_file = "${path.module}/ingester.py"
+  source_file = "${path.module}/../backend/ingester.py"
   output_path = "ingester_function.zip"
 }
 
@@ -46,7 +46,7 @@ resource "aws_lambda_function" "ingester" {
 # --- READER LAMBDA ---
 data "archive_file" "reader_zip" {
   type        = "zip"
-  source_file = "${path.module}/reader.py"
+  source_file = "${path.module}/../backend/reader.py"
   output_path = "reader_function.zip"
 }
 
