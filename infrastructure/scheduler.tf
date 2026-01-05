@@ -1,0 +1,18 @@
+resource "aws_cloudwatch_event_rule" "every_five_minutes" {
+  name                = "${var.project_name}-5min-rule"
+  schedule_expression = "rate(5 minutes)"
+}
+
+resource "aws_cloudwatch_event_target" "trigger_ingester" {
+  rule      = aws_cloudwatch_event_rule.every_five_minutes.name
+  target_id = "TriggerIngesterLambda"
+  arn       = aws_lambda_function.ingester.arn
+}
+
+resource "aws_lambda_permission" "allow_eventbridge" {
+  statement_id  = "AllowExecutionFromEventBridge"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.ingester.function_name
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.every_five_minutes.arn
+}
