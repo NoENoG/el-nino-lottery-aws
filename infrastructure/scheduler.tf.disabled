@@ -1,3 +1,4 @@
+--- DECOMMISSIONED: Scraper Schedule (Post-Draw Optimization) ---
 resource "aws_cloudwatch_event_rule" "every_five_minutes" {
   name                = "${var.project_name}-5min-rule"
   schedule_expression = "rate(5 minutes)"

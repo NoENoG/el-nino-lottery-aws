@@ -12,7 +12,7 @@ permissions:
 
 env:
   AWS_REGION: "eu-west-1"
-  TF_VAR_project_name: "el-nino-lottery-aws" 
+  TF_VAR_project_name: "el-nino-2026-aws" 
   TF_VAR_aws_region: "eu-west-1"
   TF_VAR_environment: "prod"
 
@@ -40,7 +40,7 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name:  DEBUG - Show all files
+      - name: DEBUG - Show all files
         run: |
           echo "Current location:"
           pwd
@@ -60,11 +60,4 @@ jobs:
         working-directory: .
         run: |
           echo "Syncing frontend files..."
-          aws s3 sync ./frontend s3://el-nino-lottery-aws-frontend --delete
-
-
-      - name: Trigger Scraper (First Run)
-        if: success()
-        run: |
-          echo "Triggering Lambda to populate database..."
-          aws lambda invoke --function-name el-nino-lottery-aws-scraper response.json
+          aws s3 sync ./frontend s3://el-nino-2026-aws-frontend --delete 
