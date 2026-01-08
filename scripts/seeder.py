@@ -1,4 +1,4 @@
-import boto3
+import boto3 # type: ignore
 import time
 
 TABLE_NAME = "el-nino-2026-aws-results" 
