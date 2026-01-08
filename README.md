@@ -36,6 +36,25 @@ The system utilizes a fully serverless stack to ensure zero idle costs outside o
 3.  **API:** AWS HTTP API Gateway with Proxy Integration to the Reader Lambda.
 4.  **Distribution:** Amazon S3 (Private) serving static assets via CloudFront (OAC).
 
+```mermaid
+graph TD
+    subgraph AWS_Cloud
+        EB[EventBridge Scheduler] -->|Trigger| L1[Ingester Lambda]
+        L1 -->|Write| DDB[(DynamoDB)]
+        
+        U[User] -->|HTTPS| CF[CloudFront]
+        CF -->|Fetch| S3[S3 Private Bucket]
+        U -->|API Call| AGW[HTTP API Gateway]
+        AGW -->|Proxy| L2[Reader Lambda]
+        L2 -->|Read| DDB
+    end
+    
+    subgraph Automation
+        GHA[GitHub Actions] -->|Deploy| TF[Terraform]
+        TF -->|Provision| AWS_Cloud
+    end
+```
+
 ## Technology Stack
 
 | Component | Service | Configuration Details |
@@ -88,9 +107,9 @@ aws s3 sync ../frontend s3://$(terraform output -raw frontend_bucket_name)
 ## 👨‍💻 Author
 
 **Mohamed Aly**
-*AWS Re/Start Student & Aspiring Cloud Engineer*
+*AWS Certified AI Practitioner | Cloud Engineer*
 
-Built with focused intent in Barcelona, Spain.  
-[GitHub Profile](https://github.com/NoENoG)
+Built with focused intent in Barcelona, Spain.
+[LinkedIn](https://www.linkedin.com/in/mohamed-aly-cloud/) | [GitHub](https://github.com/NoENoG)
 
 ---
