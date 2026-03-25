@@ -25,6 +25,7 @@ For **El Niño 2026**, I wanted to challenge myself to own the entire stack—fr
 | **Infrastructure** | Manual / Pipeline | **Terraform (IaC)** | Shifted to "Infrastructure as Code" to make the environment reproducible. |
 | **Deployment** | Manual Uploads | **GitHub Actions (CI/CD)** | Automated Terraform apply & S3 sync to eliminate human error. |
 | **Cost Model** | S3 Hosting | **Event-Driven** | Utilized EventBridge and On-Demand capacity to achieve true scale-to-zero. |
+| **Verification** | Pipeline Checks | Automated `terraform validate` and `fmt` checks run before deployment. |
 
 
 ## Architecture
@@ -73,7 +74,8 @@ graph TD
 
 *Simple, ad-free interface serving live results via API Gateway.*
 
-## Deployment Guide
+### Local Development & Manual Testing
+*Note: In production, infrastructure and frontend assets are automatically provisioned and deployed via the GitHub Actions CI/CD pipeline upon merging to the main branch.*
 
 ### Prerequisites
 * Terraform v1.5+
