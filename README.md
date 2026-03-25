@@ -25,7 +25,7 @@ For **El Niño 2026**, I wanted to challenge myself to own the entire stack—fr
 | **Infrastructure** | Manual / Pipeline | **Terraform (IaC)** | Shifted to "Infrastructure as Code" to make the environment reproducible. |
 | **Deployment** | Manual Uploads | **GitHub Actions (CI/CD)** | Automated Terraform apply & S3 sync to eliminate human error. |
 | **Cost Model** | S3 Hosting | **Event-Driven** | Utilized EventBridge and On-Demand capacity to achieve true scale-to-zero. |
-| **Verification** | Pipeline Checks | Automated `terraform validate` and `fmt` checks run before deployment. |
+
 
 
 ## Architecture
@@ -66,6 +66,7 @@ graph TD
 | **Database** | DynamoDB | Partition Key: `DrawDate` (String). Billing: Pay-Per-Request. |
 | **Security** | IAM & OAC | Least Privilege Roles, Origin Access Control for S3. |
 | **Network** | CloudFront | Global Edge Locations, HTTPS enforcement. |
+| **Verification** | Pipeline Checks | Automated `terraform validate` and `fmt` checks run before deployment. |
 
 
 ## 📸 Demo
