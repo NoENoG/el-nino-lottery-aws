@@ -1,63 +1,31 @@
-name: "Terraform Deploy"
+name: "Terraform CI"
+    
+    on:
+      push:
+        branches:
+          - main
+      pull_request:
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
+    jobs:
+      terraform:
+        name: "Terraform Validation"
+        runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: ./infrastructure
 
-permissions:
-  id-token: write
-  contents: read
+        steps:
+          - name: Checkout Code
+            uses: actions/checkout@v4
 
-env:
-  AWS_REGION: "eu-west-1"
-  TF_VAR_project_name: "el-nino-2026-aws" 
-  TF_VAR_aws_region: "eu-west-1"
-  TF_VAR_environment: "prod"
+          - name: Setup Terraform
+            uses: hashicorp/setup-terraform@v3
 
-jobs:
-  terraform:
-    name: "Terraform Infrastructure"
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./infrastructure
+          - name: Terraform Format Check
+            run: terraform fmt -check
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+          - name: Terraform Init
+            run: terraform init -backend=false
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ${{ env.AWS_REGION }}
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Terraform Init
-        run: terraform init
-
-      - name: DEBUG - Show all files
-        run: |
-          echo "Current location:"
-          pwd
-          echo "Listing all files recursively:"
-          ls -R
-
-      - name: Terraform Plan
-        id: plan
-        run: terraform plan -no-color
-
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve
-
-      - name: Deploy Frontend to S3
-        if: success()
-        working-directory: .
-        run: |
-          echo "Syncing frontend files..."
-          aws s3 sync ./frontend s3://el-nino-2026-aws-frontend --delete 
+          - name: Terraform Validate
+            run: terraform validate
