@@ -1,5 +1,5 @@
 # El Niño 2026: Serverless Lottery Platform
-[![Terraform Deploy](https://github.com/NoENoG/el-nino-lottery-aws/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/NoENoG/el-nino-lottery-aws/actions/workflows/deploy.yml)
+[![Terraform Deploy](https://github.com/mohamedaly-cloud/el-nino-lottery-aws/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/mohamedaly-cloud/el-nino-lottery-aws/actions/workflows/deploy.yml)
 
 A Terraform-managed, event-driven architecture designed for high-concurrency ingestion and distribution of lottery results.
 
@@ -12,7 +12,7 @@ A Terraform-managed, event-driven architecture designed for high-concurrency ing
 
 This project represents the second phase of my cloud journey.
 
-Last December, I built **[El Gordo 2025](https://github.com/NoENoG/el-gordo-lottery-aws)** (my first project). It was a simple static website hosted on S3 that relied on client-side JavaScript and 3rd-party APIs. It solved the user interface problem, but it lacked backend control.
+Last December, I built **[El Gordo 2025](https://github.com/mohamedaly-cloud/el-gordo-lottery-aws)** (my first project). It was a simple static website hosted on S3 that relied on client-side JavaScript and 3rd-party APIs. It solved the user interface problem, but it lacked backend control.
 
 For **El Niño 2026**, I wanted to challenge myself to own the entire stack—from ingestion to API security—and automate the delivery pipeline.
 
@@ -110,9 +110,9 @@ aws s3 sync ../frontend s3://$(terraform output -raw frontend_bucket_name)
 ## 👨‍💻 Author
 
 **Mohamed Aly**
-*AWS Certified AI Practitioner | Cloud Engineer*
+*AWS Certified Solutions Architect (SAA-C03) | Site Reliability Engineer*
 
 Built with focused intent in Barcelona, Spain.
-[LinkedIn](https://www.linkedin.com/in/mohamed-aly-cloud/) | [GitHub](https://github.com/NoENoG)
+[LinkedIn](https://www.linkedin.com/in/mohamed-aly-cloud/) | [GitHub](https://github.com/mohamedaly-cloud)
 
 ---
